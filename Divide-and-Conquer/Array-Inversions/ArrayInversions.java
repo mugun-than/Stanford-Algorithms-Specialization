@@ -3,7 +3,7 @@
 import java.io.*;
 import java.util.*;
 
-class countInversions {
+class ArrayInversions {
     static Integer[] getInput() {
         // Filepath for the input file
         String filepath = "IntegerArray.txt";
