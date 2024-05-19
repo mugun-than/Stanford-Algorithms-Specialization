@@ -1,18 +1,19 @@
-// KARATSUBA-MULTIPLICATION
+// KARATSUBA-MULTIPLICATION - DIVIDE AND CONQUER
 import java.util.*;
 
 class KaratsubaMultiplication {
-    static Scanner sc = new Scanner(System.in);
     static long number1;
     static long number2;
 
 
     // Getting the input from user
     public static void getInput() {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter First number: ");
         number1 = sc.nextLong();
         System.out.print("Enter Second number: ");
         number2 = sc.nextLong();
+        sc.close();
     }
 
 

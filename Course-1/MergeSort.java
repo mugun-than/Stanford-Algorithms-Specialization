@@ -1,17 +1,16 @@
-// MERGE-SORT
+// MERGE-SORT - DIVIDE AND CONQUER
 import java.util.*;
 
 class MergeSort {
-    public static Scanner sc = new Scanner(System.in);
-
-
     // Getting an array from the user, in which the array-size may vary each time
     public static int[] getInput() {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter the array elements: ");
 
         // Getting the input as a String
         String input = sc.nextLine();
-
+        sc.close();
+        
         // Converting the input String to array of tokens
         String[] tokens = input.split("\\s+");
         int[] array = new int[tokens.length];
@@ -57,40 +56,22 @@ class MergeSort {
         int[] R = new int[n2];
 
         // Initalising the left sub array
-        for (int i = 0; i < n1; i++) {
-            L[i] = A[left + i];
-        }
+        for (int i = 0; i < n1; i++) L[i] = A[left + i];
         // Initialising the right sub array
-        for (int i = 0; i < n2; i++) {
-            R[i] = A[pivot + i + 1];
-        }
+        for (int i = 0; i < n2; i++) R[i] = A[pivot + i + 1];
 
         // Merging the two sub arrays
         int i = 0, j = 0, k = left;
         while ( i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                A[k] = L[i];
-                i++;
-            }
-            else {
-                A[k] = R[j];
-                j++;
-            }
-            k++;
+            if (L[i] <= R[j]) A[k++] = L[i++];
+            else A[k++] = R[j++];
         }
 
-        while ( i < n1) {
-            A[k] = L[i];
-            k++;
-            i++;
-        }
-
-        while (j < n2) {
-            A[k] = R[j];
-            k++;
-            j++;
-        }
+        while ( i < n1) A[k++] = L[i++];
+        while (j < n2) A[k++] = R[j++];
     }
+
+
     public static void main (String[] args) {
         int[] array = getInput();
         sort(array, 0, array.length - 1);
