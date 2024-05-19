@@ -6,7 +6,7 @@ import java.util.*;
 class ArrayInversions {
     static Integer[] getInput() {
         // Filepath for the input file
-        String filepath = "IntegerArray.txt";
+        String filepath = "./Input-files/IntegerArray.txt";
         ArrayList<Integer> list = new ArrayList<>();
 
         // Traversing the file and initialising the ArrayList
