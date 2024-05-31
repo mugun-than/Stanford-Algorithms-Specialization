@@ -1,12 +1,12 @@
-// QUICK-SORT - DIVIDE AND CONQUER
+// RANDOM-SELECTION - DIVIDE AND CONQUER
 import java.io.*;
 import java.util.*;
 
-class QuickSort {
+public class RandomSelection {
     // Getting the input array elements from the user, in which the array-size may vary each and every time
-    static Integer[] getInput() {
+    private static Integer[] getInput() {
         // Filepath for the input file
-        String filepath = "./Input-files/QuickSort_input.txt";
+        String filepath = "./Input-files/RandomSelection_input.txt";
         ArrayList<Integer> list = new ArrayList<>();
 
         // Traversing the file and initialising the ArrayList
@@ -37,9 +37,9 @@ class QuickSort {
 
 
     // Method used to return a integer randomly inclusive of the range 
-    private static void getRandomInteger(Integer[] a,int min, int max) {
+    private static void getRandomInteger(Integer[] a, int min, int max) {
         Random r = new Random();
-        int pivot =  r.nextInt(max - min)+min;
+        int pivot =  r.nextInt(max - min + 1)+min;
         swap(a, pivot, min);
     }
 
@@ -57,29 +57,35 @@ class QuickSort {
     }
 
 
-    // Actual QuickSort algorithm
-    private static int Quick_Sort(Integer[] a, int l, int r) {
-        int comparisons = 0;
-        if (l < r) {
-            int pivot = partition(a, l, r);
-            comparisons += (r - l);
-            
-            comparisons += Quick_Sort(a, l, pivot - 1);
-            
-            comparisons += Quick_Sort(a, pivot + 1, r);
+    // Randomized QuickSelect
+    private static int quickSelect(Integer[] arr, int left, int right, int k) {
+        if (left <= right) {
+            int pivot = partition(arr, left, right);
+            if (pivot == k) {
+                return arr[pivot];
+            } else if (pivot < k) {
+                return quickSelect(arr, pivot + 1, right, k);
+            } else {
+                return quickSelect(arr, left, pivot - 1, k);
+            }
         }
+        return -1; // Error case
+    }
 
-        return comparisons;
+
+    // Performing random selection 
+    private static int randomSelection(Integer[] arr, int k) {
+        if(k < 0 || k >= arr.length) {
+            throw new IllegalArgumentException("Invalid value of K");
+        }
+        return quickSelect(arr, 0, arr.length - 1, k);
     }
 
 
     public static void main(String[] args) {
         Integer[] array = getInput();
-        int noOfComparisons = Quick_Sort(array, 0, array.length - 1);
-        System.out.println("Number of Comparisons: " + noOfComparisons);
-
-        for(int i = 0; i < array.length; i++) {
-            System.out.print(array[i]+" ");
-        }
+        int OrderStatistic = 190;
+        int answer = randomSelection(array, OrderStatistic - 1);
+        System.out.println(OrderStatistic + "th smallest element: " + answer);
     }
 }
