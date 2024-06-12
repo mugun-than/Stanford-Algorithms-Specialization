@@ -13,3 +13,12 @@ This repository contains the algorithms that I learned from the specialization c
 - Deterministic Selection
 - Random Contraction
 - Closest Pair
+
+## Graph search, shortest path and data structures
+### List of algorithms:
+- Breadth first search
+- Depth first search
+- Topological sort
+- Strongly connected components
+- Dijikstra's algorithm
+- Shortest path on DAG
