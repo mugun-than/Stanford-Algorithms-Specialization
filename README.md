@@ -15,6 +15,7 @@ This repository contains the algorithms that I learned from the specialization c
 - Closest Pair
 
 ## Graph search, shortest path and data structures
+![Screenshot (1)](https://github.com/mugun-than/Stanford-Algorithms-Specialization/assets/121924807/db35b2f8-05ff-4499-aedd-1716a60af906)
 ### List of algorithms:
 - Breadth first search
 - Depth first search
